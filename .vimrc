@@ -11,6 +11,7 @@ set ruler
 set ignorecase
 set smartcase
 set statusline=%F
+set backspace=indent,eol,start
 
 call pathogen#helptags()
 call pathogen#infect()
