@@ -28,8 +28,7 @@ colorscheme desert256
 map ,k 1GO#!/usr/bin/env ksh<Esc>ji
 map ,p 1GO#!/usr/bin/env python<Esc>ji
 
-map  <S-F2> :set paste<Return>"*P:set nopaste<Return>
-map  <F2> :set paste<Return>"*p:set nopaste<Return>
+map  <F2> :set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
 
 map  <F3> :%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
 map! <F3> <Esc>:%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
@@ -49,12 +48,8 @@ au BufNewFile,BufRead *.jspf set filetype=jsp
 " Make vi parse syntax highlighting from the start of the page for jsps (to fix javascript highlighting)
 autocmd BufEnter *.jspf :syn sync fromstart
 
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType jsp        set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType jspf       set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+" easymotion configs
+let g:EasyMotion_leader_key = '<Leader>'
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
