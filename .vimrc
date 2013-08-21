@@ -29,6 +29,7 @@ map ,k 1GO#!/usr/bin/env ksh<Esc>ji
 map ,p 1GO#!/usr/bin/env python<Esc>ji
 
 map  <F2> :set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
+map!  <F2> <Esc>:set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
 
 map  <F3> :%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
 map! <F3> <Esc>:%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
