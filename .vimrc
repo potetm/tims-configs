@@ -43,11 +43,60 @@ map  <F6> gg"*yG<C-o><C-o>
 
 map  <F7> <Esc>:echo expand('%:p')<Return>
 
+" Format Entire File
+map <leader>fe gg=G<cr>``zz
+
+" Format function
+map <leader>ff [[v%==
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" Window movement
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" Opens a vertical split and switches over
+nnoremap <leader>v <C-w>v<C-w>l
+" Opens a horizontal split and switches over
+nnoremap <leader>h <C-w>s<C-w>j
+
+" CtrlP
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_map = ''
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+
+" Tabs
+map <C-t> :tabnew<cr>
+map <C-p> :tabp<cr>
+map <C-n> :tabn<cr>
+map <leader>tc :tabclose<cr>
+
+" Highlight Trailing Space
+highlight TrailingWhitespace ctermbg=darkgreen guibg=darkgreen
+match TrailingWhitespace /\s\+$/
+au TabEnter * :match TrailingWhitespace /\s\+$/
+
+" Trailing space removal on save
+function! StripTrailingSpaces()
+    let l = line(".")
+    let c = col(".")
+    silent! execute '%s/\s\+$//e'
+    call cursor(l, c)
+endfunction
+au BufWritePre * :call StripTrailingSpaces()
+
 " Make vi recognize .jspf files
 au BufNewFile,BufRead *.jspf set filetype=jsp
 
 " Make vi parse syntax highlighting from the start of the page for jsps (to fix javascript highlighting)
 autocmd BufEnter *.jspf :syn sync fromstart
+
+" Recognize .md files
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " easymotion configs
 let g:EasyMotion_leader_key = '<Leader>'
