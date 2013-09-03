@@ -1,5 +1,6 @@
 set -o vi
 export EDITOR="vim"
+export GREP_OPTIONS="--color=auto"
 
 alias l="ls"
 alias sl="ls"
