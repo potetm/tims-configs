@@ -24,24 +24,21 @@ set mouse=v
 set t_Co=256
 colorscheme desert256
 
-" Macros
-map ,k 1GO#!/usr/bin/env ksh<Esc>ji
-map ,p 1GO#!/usr/bin/env python<Esc>ji
+" Turn off F1 help.
+:nmap <F1> :echo<CR>
+:imap <F1> <C-o>:echo<CR>
 
+" Pasting
 map  <F2> :set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
-map!  <F2> <Esc>:set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
+map! <F2> <Esc>:set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
 
-map  <F3> :%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
-map! <F3> <Esc>:%!expand --initial --tabs=2<Return>:%!unexpand --first-only --tabs=2<Return>:%s/[ 	][ 	]*$//<Return>
-
+" Fast numbering
 map  <F4> :set nu!<Return>
 map! <F4> <C-o><F4>
 
-map  <F5> 0"*y$<Return>
-
-map  <F6> gg"*yG<C-o><C-o>
-
-map  <F7> <Esc>:echo expand('%:p')<Return>
+" Leader
+let mapleader = ","
+let g:mapleader = ","
 
 " Format Entire File
 map <leader>fe gg=G<cr>``zz
@@ -75,6 +72,12 @@ map <C-p> :tabp<cr>
 map <C-n> :tabn<cr>
 map <leader>tc :tabclose<cr>
 
+" Unimpared mappings
+map ]q :cnext<cr>
+map [q :cprevious<cr>
+map ]Q :clast<cr>
+map [Q :cfirst<cr>
+
 " Highlight Trailing Space
 highlight TrailingWhitespace ctermbg=darkgreen guibg=darkgreen
 match TrailingWhitespace /\s\+$/
@@ -98,9 +101,6 @@ autocmd BufEnter *.jspf :syn sync fromstart
 " Recognize .md files
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" easymotion configs
-let g:EasyMotion_leader_key = '<Leader>'
-
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['red',     'DarkOrchid3'],
@@ -122,3 +122,6 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" vim-fireplace
+map <leader>r :Require<cr>
