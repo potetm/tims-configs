@@ -1,6 +1,6 @@
 set -o vi
 export EDITOR="vim"
-export GREP_OPTIONS="--color=auto"
+export GREP_OPTIONS="--color=auto --exclude-dir=.git --exclude-dir=target"
 
 alias l="ls"
 alias sl="ls"
