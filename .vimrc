@@ -67,6 +67,7 @@ nn <leader>h <C-w>s<C-w>j
 " CtrlP
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = ''
+let g:ctrlp_custom_ignore = '\v[\/](target|\.(git))$'
 nn <leader>t :let g:ctrlp_default_input = ''<cr>:CtrlP<cr>
 nn <leader>T :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlP<cr>
 nn <leader>b :let g:ctrlp_default_input = ''<cr>:CtrlPBuffer<cr>
