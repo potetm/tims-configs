@@ -45,10 +45,10 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Format Entire File
-nn <leader>fe gg=G<cr>``zz
+map <leader>fe gg=G<cr>``zz
 
 " Format function
-nn <leader>ff [[v%==
+map <leader>ff [[v%==
 
 " Switch between the last two files
 nn <leader><leader> <c-^>
