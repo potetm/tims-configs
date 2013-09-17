@@ -81,10 +81,12 @@ nn <C-n> :tabn<cr>
 nn <leader>tc :tabclose<cr>
 
 " Unimpared mappings
-nn ]q :cnext<cr>
-nn [q :cprevious<cr>
-nn ]Q :clast<cr>
-nn [Q :cfirst<cr>
+map ]q :cnext<cr>
+map [q :cprevious<cr>
+map ]Q :clast<cr>
+map [Q :cfirst<cr>
+
+let g:paredit_smartjump = 1
 
 " Highlight Trailing Space
 highlight TrailingWhitespace ctermbg=darkgreen guibg=darkgreen
