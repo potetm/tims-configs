@@ -32,6 +32,10 @@ colorscheme desert256
 map  <F2> :set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
 map! <F2> <Esc>:set paste<Return>:r !pbpaste<Return>:set nopaste<Return>
 
+" Copying
+map  <F3> :%!pbcopy<Return>u
+map! <F3> <Esc> :%!pbcopy<Return>u
+
 " Fast numbering
 map  <F4> :set nu!<Return>
 map! <F4> <C-o><F4>
@@ -41,42 +45,45 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Format Entire File
-map <leader>fe gg=G<cr>``zz
+nn <leader>fe gg=G<cr>``zz
 
 " Format function
-map <leader>ff [[v%==
+nn <leader>ff [[v%==
 
 " Switch between the last two files
-nnoremap <leader><leader> <c-^>
+nn <leader><leader> <c-^>
 
 " Window movement
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+nn <c-j> <c-w>j
+nn <c-k> <c-w>k
+nn <c-l> <c-w>l
+nn <c-h> <c-w>h
 
 " Opens a vertical split and switches over
-nnoremap <leader>v <C-w>v<C-w>l
+nn <leader>v <C-w>v<C-w>l
 " Opens a horizontal split and switches over
-nnoremap <leader>h <C-w>s<C-w>j
+nn <leader>h <C-w>s<C-w>j
 
 " CtrlP
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = ''
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
+nn <leader>t :let g:ctrlp_default_input = ''<cr>:CtrlP<cr>
+nn <leader>T :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlP<cr>
+nn <leader>b :let g:ctrlp_default_input = ''<cr>:CtrlPBuffer<cr>
+nn <leader>B :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlPBuffer<cr>
+nn <F5> :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlPTag<cr>
 
 " Tabs
-map <C-t> :tabnew<cr>
-map <C-p> :tabp<cr>
-map <C-n> :tabn<cr>
-map <leader>tc :tabclose<cr>
+nn <C-t> :tabnew<cr>
+nn <C-p> :tabp<cr>
+nn <C-n> :tabn<cr>
+nn <leader>tc :tabclose<cr>
 
 " Unimpared mappings
-map ]q :cnext<cr>
-map [q :cprevious<cr>
-map ]Q :clast<cr>
-map [Q :cfirst<cr>
+nn ]q :cnext<cr>
+nn [q :cprevious<cr>
+nn ]Q :clast<cr>
+nn [Q :cfirst<cr>
 
 " Highlight Trailing Space
 highlight TrailingWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -102,7 +109,7 @@ autocmd BufEnter *.jspf :syn sync fromstart
 au BufRead,BufNewFile *.md set filetype=markdown
 
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
+    \ ['brown',   'RoyalBlue3'],
     \ ['red',     'DarkOrchid3'],
     \ ['blue',    'SeaGreen3'],
     \ ['gray',    'DarkOrchid3'],
@@ -110,12 +117,12 @@ let g:rbpt_colorpairs = [
     \ ['cyan',    'RoyalBlue3'],
     \ ['red',     'SeaGreen3'],
     \ ['magenta', 'DarkOrchid3'],
-    \ ['white',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
+    \ ['white',   'firebrick3'],
+    \ ['gray',    'RoyalBlue3'],
     \ ['magenta', 'DarkOrchid3'],
     \ ['green',   'RoyalBlue3'],
     \ ['cyan',    'SeaGreen3'],
-    \ ['red',         'firebrick3'],
+    \ ['red',     'firebrick3'],
     \ ]
 
 au VimEnter * RainbowParenthesesToggle
