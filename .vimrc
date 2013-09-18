@@ -64,15 +64,25 @@ nn <leader>v <C-w>v<C-w>l
 " Opens a horizontal split and switches over
 nn <leader>h <C-w>s<C-w>j
 
+function! ClearCtrlPState()
+  :let g:ctrlp_default_input = ''
+endfunction
+
+function! SetCtrlPDefaultInputToCword()
+  :let g:ctrlp_default_input = expand('<cword>')
+endfunction
+
 " CtrlP
+let g:ctrlp_regexp = 1
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_map = ''
 let g:ctrlp_custom_ignore = '\v[\/](target|\.(git))$'
-nn <leader>t :let g:ctrlp_default_input = ''<cr>:CtrlP<cr>
-nn <leader>T :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlP<cr>
-nn <leader>b :let g:ctrlp_default_input = ''<cr>:CtrlPBuffer<cr>
-nn <leader>B :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlPBuffer<cr>
-nn <F5> :let g:ctrlp_default_input = expand('<cword>')<cr>:CtrlPTag<cr>
+nn <leader>t :call ClearCtrlPState()<cr>:CtrlP<cr>
+nn <leader>T :call SetCtrlPDefaultInputToCword()<cr>:CtrlP<cr>
+nn <leader>b :call ClearCtrlPState()<cr>:CtrlPBuffer<cr>
+nn <leader>B :call SetCtrlPDefaultInputToCword()<cr>:CtrlPBuffer<cr>
+" Jump to declaration
+nn <F5> :call ClearCtrlPState()<cr>:let g:ctrlp_default_input = substitute(expand('<cword>'), '.*/', '', '')<cr>:CtrlPTag<cr>
 
 " Tabs
 nn <C-t> :tabnew<cr>
@@ -86,6 +96,7 @@ map [q :cprevious<cr>
 map ]Q :clast<cr>
 map [Q :cfirst<cr>
 
+" Paredit
 let g:paredit_smartjump = 1
 let g:paredit_electric_return = 0
 
