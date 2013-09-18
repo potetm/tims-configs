@@ -91,8 +91,8 @@ let g:paredit_electric_return = 0
 
 " Make vim remember where it left off in a file (except for git commit
 " messages)
-au BufWinLeave *\(.git/COMMIT_EDITMSG\)\@<! mkview
-au BufWinEnter *\(.git/COMMIT_EDITMSG\)\@<! silent loadview
+au BufWinLeave ?*\(.git/COMMIT_EDITMSG\)\@<! mkview
+au BufWinEnter ?*\(.git/COMMIT_EDITMSG\)\@<! silent loadview
 
 " Highlight Trailing Space
 highlight TrailingWhitespace ctermbg=darkgreen guibg=darkgreen
