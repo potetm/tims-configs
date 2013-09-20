@@ -45,7 +45,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Format Entire File
-map <leader>fe gg=G<cr>``zz
+map <leader>fef gg=G<cr>``zz
 
 " Format function
 map <leader>ff [[v%==
