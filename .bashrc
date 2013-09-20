@@ -11,5 +11,8 @@ alias gitk="gitk 2> /dev/null"
 
 alias cdpr="cd ~/projects"
 alias cdae="cd ~/projects/cicayda/analytics-engine"
+alias cdbrew="cd ~/projects/potetm/tims-brew"
+alias cdconf="cd ~/projects/potetm/tims-configs"
+alias cdproj="cd ~/projects"
 
 alias dnsflush="sudo killall -HUP mDNSResponder"
